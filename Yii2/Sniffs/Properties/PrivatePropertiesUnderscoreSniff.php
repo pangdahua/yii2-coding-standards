@@ -7,14 +7,20 @@
  * The private property name is identified by the PHP token T_VARIABLE
  * The private visibility is identified by the PHP token T_PRIVATE
  */
-class Yii2_Sniffs_Properties_PrivatePropertiesUnderscoreSniff implements PHP_CodeSniffer_Sniff
+
+namespace PHP_CodeSniffer\Standards\Zend\Sniffs\Files;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class PrivatePropertiesUnderscoreSniff implements Sniff
 {
     public function register()
     {
         return [T_PRIVATE];
     }
 
-    public function process(PHP_CodeSniffer_File $file, $pointer)
+    public function process(File $file, $pointer)
     {
         $tokens = $file->getTokens();
         if ($tokens[$pointer]['content'] === 'private' &&

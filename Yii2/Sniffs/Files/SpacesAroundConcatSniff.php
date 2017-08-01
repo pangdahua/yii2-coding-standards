@@ -10,14 +10,20 @@
  *
  * @since 2.0.2
  */
-class Yii2_Sniffs_Files_SpacesAroundConcatSniff implements PHP_CodeSniffer_Sniff
+
+namespace PHP_CodeSniffer\Standards\Zend\Sniffs\Files;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class SpacesAroundConcatSniff implements Sniff
 {
     public function register()
     {
         return [T_STRING_CONCAT];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
